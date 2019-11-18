@@ -230,8 +230,8 @@ public class RiskControlManagerImpl implements RiskControlManager {
 
             List<RiskCheckResultDO> riskCheckResultDoList = riskCheckResultMapper.getResultsByType(type,
                     pageSize, (pageIndex - 1) * pageSize);
-            RiskCheckResultDTO buffer = new RiskCheckResultDTO();
             return Response.success(riskCheckResultDoList.stream().map(each -> {
+                RiskCheckResultDTO buffer = new RiskCheckResultDTO();
                 BeanUtils.copyProperties(each, buffer);
                 return buffer;
             }).collect(Collectors.toList()));
